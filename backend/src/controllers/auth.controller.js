@@ -36,9 +36,9 @@ export const login = async (req, res) => {
     const isPasswordValid = await bcrypt.compare(password, user.password)
     if (!isPasswordValid) return res.status(400).json({ message: 'Invalid credetials' })
     
+    req.user = user
     generateToken(user._id, res)
-
-    res.status(200).json({ message: 'Login success', user: user.username })
+    res.status(200).json({ message: 'Login success', user: { ...user._doc, password: undefined } })
   } catch (error) {
     res.status(500).json({ message: 'Server error', error })
   }
@@ -50,5 +50,13 @@ export const logout = async (req, res) => {
     res.status(200).json({ message: 'Logout succesfully' })
   } catch (error) {
     res.status(500).json({ message: 'Server error', error })
+  }
+}
+
+export const checkAuth = (req, res) => {
+  try {
+    res.status(200).json(req.user)
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' })
   }
 }
