@@ -3,15 +3,18 @@ import { Eye, EyeOff, Lock, User } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 import Input from "../components/Input"
+import { useAuthStore } from "../stores/auth.store.js"
 
 
 const LoginPage = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
+  const { error, login } = useAuthStore()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    await login(username, password)
   }
 
   return (
@@ -58,6 +61,7 @@ const LoginPage = () => {
               )}
             </button>
           </div>
+          {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
