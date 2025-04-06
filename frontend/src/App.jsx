@@ -6,7 +6,7 @@ import LoginPage from "./pages/LoginPage"
 function App() {
   return (
     <div className="h-screen flex flex-col items-center bg-amber-100">
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element=<LoginPage /> />
       </Routes>
