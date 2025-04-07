@@ -6,6 +6,6 @@ const authRoute = Router()
 authRoute.post('/signup', signup)
 authRoute.post('/login', login)
 authRoute.get('/logout', logout)
-authRoute.get('/checkAuth', checkAuth)
+authRoute.get('/check-auth', checkAuth)
 
 export default authRoute
