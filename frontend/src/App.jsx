@@ -11,6 +11,7 @@ function App() {
   useEffect(() => {
     checkAuth()
   }, [checkAuth])
+  
   return (
     <div className="h-screen flex flex-col items-center bg-amber-100">
       <Routes>

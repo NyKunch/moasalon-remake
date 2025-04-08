@@ -1,4 +1,10 @@
+import { useAuthStore } from "../stores/auth.store"
+
 const Navbar = () => {
+  const { logout } = useAuthStore()
+  const handleLogout = async () => {
+    await logout()
+  }
   return (
     <div className="w-full py-3 px-10 mt-1 flex justify-between items-center border-b-2 border-amber-400
     shadow-sm">
@@ -7,15 +13,19 @@ const Navbar = () => {
         Moa<span className="text-orange-400">Salon</span>
       </h1>
       <div className="flex gap-12">
-        <h3 className="text-xl font-bold text-amber-500">
+        <a href="/service" className="text-xl font-bold text-amber-500">
           Service
-        </h3>
-        <h3 className="text-xl font-bold text-amber-500">
+        </a>
+        <a href="/staff" className="text-xl font-bold text-amber-500">
           Staff
-        </h3>
-        <h3 className="text-xl font-bold text-amber-500">
-          Login
-        </h3>
+        </a>
+        <button 
+          type="button" 
+          onClick={handleLogout} 
+          className="text-xl font-bold text-amber-500"
+        >
+          Logout
+        </button>
       </div>
     </div>
   )

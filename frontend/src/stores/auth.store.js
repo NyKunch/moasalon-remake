@@ -4,7 +4,7 @@ import { axiosInstance } from '../lib/axios.js'
 export const useAuthStore = create((set) => ({
   user: null,
   isAuthenticated: false,
-  error:null,
+  error: null,
   isLoading: false,
   
   signup: async () => {},
@@ -21,15 +21,22 @@ export const useAuthStore = create((set) => ({
     }
   },
 
-  logout: async () => {},
+  logout: async () => {
+    try {
+      await axiosInstance.get('/auth/logout')
+      set({ user: null, isAuthenticated: false, error: null })
+    } catch (error) {
+      set({ error: error.response.data.message || 'Error logging out' })
+    } 
+  },
 
   checkAuth: async () => {
-    set({ isLoading: true })
+    set({ isLoading: true, error: null })
     try {
-      const response = await axiosInstance.get('/auth/checkAuth')
-      set({ user: response.data.user, isAuthenticated: true })
+      const response = await axiosInstance.get('/auth/check-auth')
+      set({ user: response.data, isAuthenticated: true })
     } catch (error) {
-      set({ error: error.response.data.message || 'Error checking authentication' })
+      set({ isAuthenticated: false })
     } finally {
       set({ isLoading: false })
     }
