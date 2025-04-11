@@ -4,6 +4,7 @@ import LoginPage from "./pages/LoginPage"
 import HomePage from './pages/HomePage'
 import { useAuthStore } from './stores/auth.store'
 import { useEffect } from 'react'
+import SignUpPage from './pages/SignUpPage'
 
 function App() {
   const { isAuthenticated, checkAuth } = useAuthStore()
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={isAuthenticated ? <HomePage /> : <Navigate to="/login" />} />
         <Route path="/login" element={!isAuthenticated ? <LoginPage /> : <Navigate to="/" />} />
+        <Route path="/signup" element={!isAuthenticated ? <SignUpPage /> : <Navigate to="/" />} />
       </Routes>
     </div>
   )
