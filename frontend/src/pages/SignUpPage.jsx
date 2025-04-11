@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { motion } from 'framer-motion'
-import { Eye, EyeOff, Lock, User } from "lucide-react"
+import { Eye, EyeOff, Loader, Lock, User } from "lucide-react"
 import { useAuthStore } from "../stores/auth.store"
 import Input from "../components/Input"
 import { Link } from "react-router-dom"
@@ -10,11 +10,11 @@ const SignUpPage = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
-  const { error, signup } = useAuthStore()
+  const { error, signup, isLoading } = useAuthStore()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    signup(username, password)
+    await signup(username, password)
   }
 
   return (
@@ -70,10 +70,9 @@ const SignUpPage = () => {
               font-bold rounded-lg shadow-lg hover:from-amber-600 hover:to-orange-700 focus:outline-none
               focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 transition duration-200"
             type="submit"
-            // disabled={isLoading}
+            disabled={isLoading}
           >
-              {/* {isLoading ? <Loader className='size-6 animate-spin mx-auto' /> : 'Login'} */}
-              Sign Up
+              {isLoading ? <Loader className='size-6 animate-spin mx-auto' /> : 'Sign Up'}
             </motion.button>
         </form>
       </div>
