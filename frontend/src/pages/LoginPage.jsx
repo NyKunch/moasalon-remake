@@ -1,16 +1,17 @@
 import { useState } from "react"
-import { Eye, EyeOff, Lock, User } from 'lucide-react'
+import { Eye, EyeOff, Loader, Lock, User } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 import Input from "../components/Input"
 import { useAuthStore } from "../stores/auth.store.js"
+import { Link } from "react-router-dom"
 
 
 const LoginPage = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
-  const { error, login } = useAuthStore()
+  const { error, login, isLoading } = useAuthStore()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -69,16 +70,15 @@ const LoginPage = () => {
               font-bold rounded-lg shadow-lg hover:from-amber-600 hover:to-orange-700 focus:outline-none
               focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 transition duration-200"
             type="submit"
-            // disabled={isLoading}
+            disabled={isLoading}
           >
-              {/* {isLoading ? <Loader className='size-6 animate-spin mx-auto' /> : 'Login'} */}
-              Login
+              {isLoading ? <Loader className='size-6 animate-spin mx-auto' /> : 'Login'}
             </motion.button>
         </form>
       </div>
       <div className="px-8 py-4 bg-amber-600 flex justify-center">
         <p className="text-sm text-amber-50 font-semibold">
-          Don't have an account? <span className="text-amber-400 hover:underline">register.</span>
+          Don't have an account? <Link to='/signup' className="text-amber-400 hover:underline">register.</Link>
         </p>
       </div>
     </motion.div>
