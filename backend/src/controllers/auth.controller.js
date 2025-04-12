@@ -19,7 +19,7 @@ export const signup = async (req, res) => {
 
     await newUser.save()
     generateToken(newUser._id, res)
-    return res.status(201).json({ message: 'Account created', user: newUser.username })
+    return res.status(201).json({ message: 'Account created', user: {...newUser._doc, password: undefined } })
   } catch (error) {
     return res.status(500).json({ message: 'Server error ', error })
   }
