@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 const HeroSection = () => {
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    <section className="relative min-h-screen w-full overflow-hidden">
       {/* Background Image */}
       <img 
         src="https://images.unsplash.com/photo-1633681926035-ec1ac984418a?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
