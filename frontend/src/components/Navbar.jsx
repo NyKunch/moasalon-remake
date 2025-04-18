@@ -13,10 +13,10 @@ const Navbar = () => {
         Moa<span className="text-orange-400">Salon</span>
       </h1>
       <div className="flex gap-12">
-        <a href="/service" className="text-xl font-bold text-amber-500">
+        <a href="#service" className="text-xl font-bold text-amber-500">
           Service
         </a>
-        <a href="/staff" className="text-xl font-bold text-amber-500">
+        <a href="#staff" className="text-xl font-bold text-amber-500">
           Staff
         </a>
         <button 

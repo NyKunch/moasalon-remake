@@ -25,8 +25,8 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center bg-white py-20 px-6 md:px-16" id="services">
-      <div className="text-center mb-12 mt-[-14px]">
+    <section id="service" className="min-h-screen flex flex-col items-center justify-center bg-white py-20 px-6 md:px-16" id="services">
+      <div className="text-center mb-12 mt-[-16px]">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

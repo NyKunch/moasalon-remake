@@ -1,6 +1,7 @@
 import HeroSection from "../components/HeroSection"
 import Navbar from "../components/Navbar"
 import ServicesSection from "../components/ServiceSection"
+import StaffSection from "../components/StaffSection"
 
 // import { useAuthStore } from "../stores/auth.store"
 
@@ -11,6 +12,7 @@ const HomePage = () => {
       <Navbar />
       <HeroSection />
       <ServicesSection />
+      <StaffSection />
     </>
   )
 }
